@@ -1,0 +1,97 @@
+Description: This is a cloudformation to create a vpc
+
+Parameters:
+  VpcCIDRLab:
+    Description: This is VPC CIDR Block
+    Type: String
+
+  PublicSubnetCIDRlab:
+    Description: This is public subnet CIDR block
+    Type: String
+
+Resources:
+  # creating a VPC
+  VPCLab4:  #It can be any name
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: !Ref VpcCIDRLab
+      EnableDnsHostnames: true
+      EnableDnsSupport: true
+      InstanceTenancy: default
+      Tags:
+        - key:user
+            value:masud
+        - key:izaan-lesson
+            value:13
+        - key:izaan-lab
+            value:4.1.1
+
+# Creating a public subnet
+  PublicSubnetLab4:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: us-east-1a
+      CidrBlock: !Ref PublicSubnetCIDRlab
+      Tags:
+        - key:user
+          value:masud
+        - key:izaan-lesson
+          value:13
+        - key:izaan-lab
+          value:4.1.1
+      VpcId: !Ref VPCLab4
+
+  # Creating the internet gateway
+  InternetGatewayLab:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - key:Name
+          value:Lab-IGW
+
+  # Attaching the internet gateway
+  InternetGatewayAttachment:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      InternetGatewayId: !GetAtt InternetGatewayLab.InternetGatewayId
+      VpcId: !Ref VPCLab4
+      VpnGatewayId: String
+
+# Creating the route table
+  RouteTablelab:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      Tags:
+        - Key: Name
+          value: RouteTablelab4
+      VpcId: !Ref VPCLab4
+
+
+# Attaching the route table to internet gateway
+  PublicRouteLab:
+    Type: AWS::EC2::Route
+    Properties:
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !GetAtt InternetGatewayLab.InternetGatewayId
+      RouteTableId: !Ref RouteTablelab
+
+# Attaching to the subnet
+  PublicSubnetRTAssociationLab:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId: !Ref RouteTablelab
+      SubnetId: !Ref PublicSubnetLab4
+
+#Output
+Outputs:
+  VPCIDOutput:
+    Description: VPC ID Output
+    Value: !Ref VPCLab4
+    Export:
+      Name: Output-VPC-ID
+
+  PublicSubnetOutput:
+    Description: Public Subnet Output
+    Value: !Ref PublicSubnetLab4
+    Export:
+      Name: Output-Public-Subnet
