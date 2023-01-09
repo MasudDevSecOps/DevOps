@@ -1,0 +1,24 @@
+#Creating the first bucket
+#Resources:
+  #S3Bucket:
+    #Type: AWS::S3::Bucket
+    #Properties:
+      #BucketName: masud1234
+
+
+
+#Updating the parameters to replace the S3 name
+
+Parameters:
+  NewBucketTest:
+    Description: Creating a parameters to replace the s3 bucket name
+    Type: String
+
+
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref NewBucketTest
+
+

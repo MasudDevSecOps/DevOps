@@ -1,0 +1,111 @@
+{
+    "Roles": [
+        {
+            "Path": "/",
+            "RoleName": "Assignment01",
+            "RoleId": "AROA6FOMTPQRKJASPTBC7",
+            "Arn": "arn:aws:iam::973776059426:role/Assignment01",
+            "CreateDate": "2022-12-03T14:18:01+00:00",
+            "AssumeRolePolicyDocument": {
+                "Version": "2012-10-17",
+                "Statement": [
+                    {
+                        "Effect": "Allow",
+                        "Principal": {
+                            "Service": "ec2.amazonaws.com"
+                        },
+                        "Action": "sts:AssumeRole"
+                    }
+                ]
+            },
+            "Description": "Allows EC2 instances to call AWS services on your behalf.",
+            "MaxSessionDuration": 3600
+        },
+        {
+            "Path": "/service-role/",
+            "RoleName": "AWSCloud9SSMAccessRole",
+            "RoleId": "AROA6FOMTPQRGLAZJVBWM",
+            "Arn": "arn:aws:iam::973776059426:role/service-role/AWSCloud9SSMAccessRole",
+            "CreateDate": "2022-11-19T02:46:02+00:00",
+            "AssumeRolePolicyDocument": {
+                "Version": "2012-10-17",
+                "Statement": [
+                    {
+                        "Effect": "Allow",
+                        "Principal": {
+                            "Service": [
+                                "cloud9.amazonaws.com",
+                                "ec2.amazonaws.com"
+                            ]
+                        },
+                        "Action": "sts:AssumeRole"
+                    }
+                ]
+            },
+            "MaxSessionDuration": 3600
+        },
+        {
+            "Path": "/aws-service-role/cloud9.amazonaws.com/",
+            "RoleName": "AWSServiceRoleForAWSCloud9",
+            "RoleId": "AROA6FOMTPQREUC5R3PYJ",
+            "Arn": "arn:aws:iam::973776059426:role/aws-service-role/cloud9.amazonaws.com/AWSServiceRoleForAWSCloud9",
+            "CreateDate": "2022-11-19T02:46:03+00:00",
+            "AssumeRolePolicyDocument": {
+                "Version": "2012-10-17",
+                "Statement": [
+                    {
+                        "Effect": "Allow",
+                        "Principal": {
+                            "Service": "cloud9.amazonaws.com"
+                        },
+                        "Action": "sts:AssumeRole"
+                    }
+                ]
+            },
+            "Description": "Service linked role for AWS Cloud9",
+            "MaxSessionDuration": 3600
+        },
+        {
+            "Path": "/aws-service-role/support.amazonaws.com/",
+            "RoleName": "AWSServiceRoleForSupport",
+            "RoleId": "AROA6FOMTPQRMFHTQDCFK",
+            "Arn": "arn:aws:iam::973776059426:role/aws-service-role/support.amazonaws.com/AWSServiceRoleForSupport",
+            "CreateDate": "2022-11-02T05:35:12+00:00",
+            "AssumeRolePolicyDocument": {
+                "Version": "2012-10-17",
+                "Statement": [
+                    {
+                        "Effect": "Allow",
+                        "Principal": {
+                            "Service": "support.amazonaws.com"
+                        },
+                        "Action": "sts:AssumeRole"
+                    }
+                ]
+            },
+            "Description": "Enables resource access for AWS to provide billing, administrative and support services",
+            "MaxSessionDuration": 3600
+        },
+        {
+            "Path": "/aws-service-role/trustedadvisor.amazonaws.com/",
+            "RoleName": "AWSServiceRoleForTrustedAdvisor",
+            "RoleId": "AROA6FOMTPQRMAJWNGXYP",
+            "Arn": "arn:aws:iam::973776059426:role/aws-service-role/trustedadvisor.amazonaws.com/AWSServiceRoleForTrustedAdvisor",
+            "CreateDate": "2022-11-02T05:35:12+00:00",
+            "AssumeRolePolicyDocument": {
+                "Version": "2012-10-17",
+                "Statement": [
+                    {
+                        "Effect": "Allow",
+                        "Principal": {
+                            "Service": "trustedadvisor.amazonaws.com"
+                        },
+                        "Action": "sts:AssumeRole"
+                    }
+                ]
+            },
+            "Description": "Access for the AWS Trusted Advisor Service to help reduce cost, increase performance, and improve security of your AWS environment.",
+            "MaxSessionDuration": 3600
+        }
+    ]
+}

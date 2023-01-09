@@ -1,0 +1,34 @@
+  AssignmentsMasudurRahman
+    #Assignment_Identity and Access Management (IAM) #Used AWS Console to complete this assignment
+    
+    *Lesson 3.1: Introduction to Identity and Access Management
+
+            ----Lab 3.1.1: IAM Role----
+
+    Created an IAM role and attached inline Policies, provided the Role read-only access to all IAM resources.
+    Listed all the Roles and Describe the specific Role was created using the following two commands
+            To list: aws iam list-roles
+            To describe the role: iam get-role --role-name Assignment01
+            ---Lab 3.1.2: Customer Managed Policy----
+
+    Converted the inline policy to seperate customer managed policy
+    Then attached the customer managed policy to the IAM role
+            ---Lab 3.1.4: AWS-Managed Policies----
+
+    Created another IAM role and reused the customer managed policy which was converted from inline policy. Additionally updated the description to mention the policy was being reused
+            ---Lab 3.1.4: AWS-Managed Policies---
+
+    Replaced the customer managed policy by the AWS Managed Policy to both roles granting Read permissions to the IAM service.
+            ---Lab 3.1.5: Policy Simulator----
+
+    Used the AWS Policy Simulator to simulate the ability of each role to perform the mentioned actions.
+            ---Lab 3.1.6: Clean Up--- Deleted the roles and policy
+
+            Lesson 3.2: Trust Relationships & Assuming Roles
+
+    - Created an IAM role with read only access
+    - Switched user using the account number and name
+    - Attempted to create a S3 bucked and it failed due to lack of permission
+    - Added privileges by providing the s3 full access, I was able to create a bucket
+    - Successfully added a .txt file to the bucket
+    - As user I was able to list the buckets but not added the .txt file due to permission

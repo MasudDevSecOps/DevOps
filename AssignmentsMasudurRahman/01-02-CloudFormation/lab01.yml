@@ -1,0 +1,11 @@
+Parameters:
+  NewBucketTest:
+    Description: New template with parameters
+    Type: String
+    Default: test002
+
+Resources:
+  S3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: !Ref NewBucketTest
