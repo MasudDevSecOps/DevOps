@@ -93,23 +93,23 @@ Describe these instance attributes by querying the Cloud9 environment's
 - the image snapshot, or Amazon Machine Image (AMI), the instance was
   launched from
 
-Answer: curl http://169.254.169.254/latest/meta-data/ami-id
+>> curl http://169.254.169.254/latest/meta-data/ami-id
 
 - the Type of instance created from that AMI
 
-Answer: curl http://169.254.169.254/latest/meta-data/instance-type
+>>  curl http://169.254.169.254/latest/meta-data/instance-type
 
 - the public IPV4 IP address
 
-Answer: curl http://169.254.169.254/latest/meta-data/instance-type/local-ipv4
+>> curl http://169.254.169.254/latest/meta-data/instance-type/local-ipv4
 
 - the Security Groups the instance is associated with
 
-Answer: curl http://169.254.169.254/latest/meta-data/instance-type/local-ipv4/security-groups
+>> curl http://169.254.169.254/latest/meta-data/instance-type/local-ipv4/security-groups
 
 - the networking Subnet ID the instance was launched into
 
-Answer: curl http://169.254.169.254/latest/meta-data/network/interfaces/macs/16:fc:a0:95:05:3d/subnet-id
+>> curl http://169.254.169.254/latest/meta-data/network/interfaces/macs/16:fc:a0:95:05:3d/subnet-id
 
 Save your queries (but not the outputs) in your source code.
 
@@ -140,6 +140,11 @@ Create the stack:
 
 - Use the AWS CLI to describe the stack's resources, then use the AWS
   CLI to describe each instance that was created.
+>> aws cloudformation describe-stack-resources --stack-name ec2lab5
+>> aws cloudformation describe-stack-resources --stack-name ec2lab5 --logical-resource-id UbuntuInstance
+>> aws cloudformation describe-stack-resources --stack-name ec2lab5 --logical-resource-id WindowsInstance
+
+
 
 #### Lab 5.1.3: Update Your Stack
 
