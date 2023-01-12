@@ -1,0 +1,42 @@
+Description: CFN template to update the windows 2012 instances
+
+Parameters:
+  NewWindowsInstance2012:
+    Description: Creating the parameter to update windows
+    Type: String
+
+
+
+Resources:
+  LaunchTemplate:
+    Type: AWS::EC2::LaunchTemplate
+    Properties:
+      LaunchTemplateData:
+        InstanceType: t2.micro
+        KeyName: my-key-pair
+      LaunchTemplateName: IzanLaunchTemplate
+
+
+  WindowsInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !Ref NewWindowsInstance2012
+      LaunchTemplate:
+        LaunchTemplateId: !Ref LaunchTemplate
+        Version: !GetAtt LaunchTemplate.LatestVersionNumber
+      Tags:
+        - Key: Name
+          Value: WindowsInstance
+
+
+  UbuntuInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-06878d265978313ca
+      LaunchTemplate:
+        LaunchTemplateId: !Ref LaunchTemplate
+        Version: !GetAtt LaunchTemplate.LatestVersionNumber
+      Tags:
+        - Key: Name
+          Value: UbuntuInstance
+
