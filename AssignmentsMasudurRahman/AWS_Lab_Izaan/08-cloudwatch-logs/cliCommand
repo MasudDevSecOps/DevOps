@@ -1,0 +1,8 @@
+
+#To read the data:
+curl -XGET -u 'masudos:PASS' 'https://search-movies-aws-opensearch-54y3wplcanhv3luyff7jimvcmu.us-east-1.es.amazonaws.com/movies/_doc/1'
+
+#To upload the data:
+curl -XPUT -u 'masudos:PASS' 'https://search-movies-aws-opensearch-54y3wplcanhv3luyff7jimvcmu.us-east-1.es.amazonaws.com/movies/_doc/1' -d '{"director": "Burton, Tim", "genre": ["Comedy","Sci-Fi"], "year": 1996, "actor": ["Jack Nicholson","Pierce Brosnan","Sarah Jessica Parker"], "title": "Mars Attacks!"}' -H 'Content-Type: application/json'
+
+

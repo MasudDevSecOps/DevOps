@@ -1,0 +1,34 @@
+Description: CFN template to create two separate instances
+
+Resources:
+  LaunchTemplate:
+    Type: AWS::EC2::LaunchTemplate
+    Properties:
+      LaunchTemplateData:
+        InstanceType: t2.micro
+        KeyName: my-key-pair
+      LaunchTemplateName: IzanLaunchTemplate
+
+
+  EIPAssociation:
+    Type: AWS::EC2::EIPAssociation
+    Properties:
+      EIP: String
+      InstanceId: String
+      NetworkInterfaceId: String
+      PrivateIpAddress: String
+
+
+
+
+  UbuntuInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-06878d265978313ca
+      LaunchTemplate:
+        LaunchTemplateId: !Ref LaunchTemplate
+        Version: !GetAtt LaunchTemplate.LatestVersionNumber
+      Tags:
+        - Key: Name
+          Value: UbuntuInstance
+
