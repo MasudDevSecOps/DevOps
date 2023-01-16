@@ -102,8 +102,9 @@ Using "aws s3", create a bucket:
 - Use the us-west-2 region.
 
 - Call the bucket "izaan-_your-AWS-username_".
-
+>> aws s3api create-bucket --bucket izaan-my-aws-masud --region us-east-1
 - List the contents of the bucket.
+>> aws s3 ls s3://mybucket
 
 #### Lab 2.1.2: Upload Objects to a Bucket
 
@@ -114,9 +115,11 @@ Add an object to your bucket:
 
 - Copy the file to your bucket using the "aws s3" command. Find more
   than one way to upload it.
+>> aws s3 cp s2-cli-command.txt s3://izaan-my-aws-masud/data/s2-cli-command.txt
+>> aws s3 sync data s3://izaan-my-aws-masud
 
 - List the contents of the bucket after each upload.
-
+>> aws s3 ls s3://izaan-my-aws-masud/data/
 ##### Question: Copying to Top Level
 
 _How would you copy the contents of the directory to the top level of your bucket?_
